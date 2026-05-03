@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MORX - Support</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #333; }
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.15em; margin-top: 2em; }
+  p, li { font-size: 0.95em; }
+  a { color: #007AFF; }
+  .lang-switch { text-align: right; margin-bottom: 20px; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<div class="lang-switch"><a href="#ja" onclick="toggle()">日本語</a></div>
+
+<div id="en">
+<h1>MORX Support</h1>
+
+<h2>Contact</h2>
+<p>If you have questions, feedback, or need help with MORX, please contact us at:<br>
+<a href="mailto:support@tamanegi-sw.com">support@tamanegi-sw.com</a></p>
+
+<h2>FAQ</h2>
+
+<h3>How do I restore my Pro purchase on a new device?</h3>
+<p>Open MORX, go to Settings, and tap "Restore Purchases." Your Pro unlock will be restored automatically if you are signed in with the same Apple Account.</p>
+
+<h3>What speed should I start with?</h3>
+<p>We recommend starting Koch training at the default speed. The Farnsworth spacing gives you extra time between characters while keeping the character speed at a realistic pace (18 WPM). This trains your ear to recognize patterns at real CW speed from the very beginning.</p>
+
+<h3>What is the Koch method?</h3>
+<p>The Koch method teaches Morse code by starting with just two characters at full speed, then adding one new character at a time as you reach 90% accuracy. This is widely considered the most effective way to learn CW.</p>
+
+<h3>Does MORX work offline?</h3>
+<p>Yes. MORX works entirely offline. No internet connection is required for any feature.</p>
+
+<h2>System Requirements</h2>
+<p>iOS 17.0 or later. Compatible with iPhone and iPad.</p>
+</div>
+
+<div id="ja" style="display:none;">
+<h1>MORX サポート</h1>
+
+<h2>お問い合わせ</h2>
+<p>ご質問・ご意見・お困りのことがありましたら、下記までご連絡ください。<br>
+<a href="mailto:support@tamanegi-sw.com">support@tamanegi-sw.com</a></p>
+
+<h2>よくある質問</h2>
+
+<h3>新しいデバイスでPro購入を復元するには？</h3>
+<p>MORXを開き、設定から「購入を復元」をタップしてください。同じApple Accountでサインインしていれば自動的に復元されます。</p>
+
+<h3>最初の速度はどれくらいがいいですか？</h3>
+<p>Koch法トレーニングはデフォルト速度でのスタートをおすすめします。Farnsworth間隔により文字間に余裕がありつつ、各文字は実戦速度（18 WPM）で再生されるため、最初から本物のCWリズムに耳を慣らせます。</p>
+
+<h3>Koch法とは？</h3>
+<p>Koch法は、最初から実速度で2文字だけを練習し、正答率90%に達したら1文字ずつ追加していく学習法です。CW習得に最も効果的な方法として広く認められています。</p>
+
+<h3>MORXはオフラインで使えますか？</h3>
+<p>はい。MORXは完全オフラインで動作します。すべての機能にインターネット接続は不要です。</p>
+
+<h2>動作環境</h2>
+<p>iOS 17.0以降。iPhone・iPad対応。</p>
+</div>
+
+<script>
+function toggle() {
+  var en = document.getElementById('en');
+  var ja = document.getElementById('ja');
+  if (ja.style.display === 'none') {
+    ja.style.display = 'block';
+    en.style.display = 'none';
+  } else {
+    ja.style.display = 'none';
+    en.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
