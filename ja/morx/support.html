@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MORX — Support</title>
+<title>MORX — サポート</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
-      fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] },
+      fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Hiragino Sans', 'sans-serif'] },
       colors: {
         brand: { 50: '#D1ECEE', 100: '#A8DDE2', 400: '#5EC4C8', 500: '#0A9396', 600: '#005F73' },
         surface: { 800: '#1a1a2e', 900: '#12121f', 950: '#0a0a14' }
@@ -35,12 +35,12 @@ tailwind.config = {
 <nav class="fixed top-0 inset-x-0 z-50 bg-surface-950/70 backdrop-blur-xl border-b border-white/5">
   <div class="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
     <a href="../index.html" class="flex items-center gap-2.5 font-semibold tracking-tight">
-      <img src="../assets/logo.png" alt="Tamanegi Software Lab" class="w-8 h-8">
+      <img src="../../assets/logo.png" alt="Tamanegi Software Lab" class="w-8 h-8">
       <span class="hidden sm:inline">Tamanegi Software Lab</span>
     </a>
     <div class="flex items-center gap-6 text-sm">
-      <a href="../index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
-      <a href="../ja/morx/support.html" class="ml-2 px-2.5 py-1 rounded-md text-xs font-medium text-gray-400 border border-white/10 hover:border-white/20 hover:text-white transition-all">JA</a>
+      <a href="../index.html" class="text-gray-400 hover:text-white transition-colors">ホーム</a>
+      <a href="../../morx/support.html" class="ml-2 px-2.5 py-1 rounded-md text-xs font-medium text-gray-400 border border-white/10 hover:border-white/20 hover:text-white transition-all">EN</a>
     </div>
   </div>
 </nav>
@@ -48,12 +48,12 @@ tailwind.config = {
 <!-- Header -->
 <section class="pt-28 pb-6 px-6 max-w-3xl mx-auto">
   <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8 animate-fade-up">
-    <a href="../index.html" class="hover:text-gray-300 transition-colors">Home</a>
+    <a href="../index.html" class="hover:text-gray-300 transition-colors">ホーム</a>
     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-    <span class="text-gray-300">MORX Support</span>
+    <span class="text-gray-300">MORX サポート</span>
   </nav>
-  <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight animate-fade-up delay-1">Support</h1>
-  <p class="mt-4 text-lg text-gray-400 animate-fade-up delay-2">Everything you need to get the most out of MORX.</p>
+  <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight animate-fade-up delay-1">サポート</h1>
+  <p class="mt-4 text-lg text-gray-400 animate-fade-up delay-2">MORXを最大限に活用するための情報をまとめました。</p>
 </section>
 
 <!-- Contact card -->
@@ -64,8 +64,8 @@ tailwind.config = {
         <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
       </div>
       <div>
-        <h2 class="text-lg font-semibold">Get in touch</h2>
-        <p class="text-gray-400 mt-1">Questions, feedback, or need help? Reach us at
+        <h2 class="text-lg font-semibold">お問い合わせ</h2>
+        <p class="text-gray-400 mt-1">ご質問・ご意見・お困りのことがありましたら、下記までご連絡ください。
           <a href="mailto:contact@tamanegi-sw.com" class="text-brand-400 hover:underline underline-offset-2">contact@tamanegi-sw.com</a>
         </p>
       </div>
@@ -76,46 +76,46 @@ tailwind.config = {
 <!-- FAQ -->
 <section class="max-w-3xl mx-auto px-6 py-16">
   <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-400 mb-2">FAQ</p>
-  <h2 class="text-2xl font-bold tracking-tight mb-8">Frequently asked questions</h2>
+  <h2 class="text-2xl font-bold tracking-tight mb-8">よくある質問</h2>
 
   <div class="space-y-3">
     <details class="group rounded-xl border border-white/[0.06] bg-surface-900/60 transition-colors open:border-brand-500/20">
       <summary class="cursor-pointer select-none flex items-center justify-between gap-4 px-6 py-5 font-medium text-gray-100">
-        How do I restore my Pro purchase on a new device?
+        新しいデバイスでPro購入を復元するには？
         <svg class="w-5 h-5 shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-5 text-gray-400 leading-relaxed">
-        Open MORX &rarr; Settings &rarr; "Restore Purchases." Your Pro unlock will be restored automatically if you're signed in with the same Apple Account.
+        MORXを開き、設定 &rarr;「購入を復元」をタップしてください。同じApple Accountでサインインしていれば自動的に復元されます。
       </div>
     </details>
 
     <details class="group rounded-xl border border-white/[0.06] bg-surface-900/60 transition-colors open:border-brand-500/20">
       <summary class="cursor-pointer select-none flex items-center justify-between gap-4 px-6 py-5 font-medium text-gray-100">
-        What speed should I start with?
+        最初の速度はどれくらいがいいですか？
         <svg class="w-5 h-5 shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-5 text-gray-400 leading-relaxed">
-        We recommend starting Koch training at the default speed. The Farnsworth spacing gives you extra time between characters while keeping the character speed at a realistic pace (18 WPM). This trains your ear to recognize patterns at real CW speed from the very beginning.
+        Koch法トレーニングはデフォルト速度でのスタートをおすすめします。Farnsworth間隔により文字間に余裕がありつつ、各文字は実戦速度（18 WPM）で再生されるため、最初から本物のCWリズムに耳を慣らせます。
       </div>
     </details>
 
     <details class="group rounded-xl border border-white/[0.06] bg-surface-900/60 transition-colors open:border-brand-500/20">
       <summary class="cursor-pointer select-none flex items-center justify-between gap-4 px-6 py-5 font-medium text-gray-100">
-        What is the Koch method?
+        Koch法とは？
         <svg class="w-5 h-5 shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-5 text-gray-400 leading-relaxed">
-        The Koch method teaches Morse code by starting with just two characters at full speed, then adding one new character at a time as you reach 90% accuracy. This is widely considered the most effective way to learn CW.
+        Koch法は、最初から実速度で2文字だけを練習し、正答率90%に達したら1文字ずつ追加していく学習法です。CW習得に最も効果的な方法として広く認められています。
       </div>
     </details>
 
     <details class="group rounded-xl border border-white/[0.06] bg-surface-900/60 transition-colors open:border-brand-500/20">
       <summary class="cursor-pointer select-none flex items-center justify-between gap-4 px-6 py-5 font-medium text-gray-100">
-        Does MORX work offline?
+        MORXはオフラインで使えますか？
         <svg class="w-5 h-5 shrink-0 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-5 text-gray-400 leading-relaxed">
-        Yes. MORX works entirely offline. No internet connection is required for any feature.
+        はい。MORXは完全オフラインで動作します。すべての機能にインターネット接続は不要です。
       </div>
     </details>
   </div>
@@ -124,15 +124,15 @@ tailwind.config = {
 <!-- System Requirements -->
 <section class="max-w-3xl mx-auto px-6 pb-24">
   <div class="rounded-2xl border border-white/[0.06] bg-surface-900/60 p-6 sm:p-8">
-    <h2 class="text-lg font-semibold mb-3">System Requirements</h2>
+    <h2 class="text-lg font-semibold mb-3">動作環境</h2>
     <div class="flex flex-wrap gap-6 text-gray-400">
       <div class="flex items-center gap-2">
         <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3"/></svg>
-        iOS 17.0 or later
+        iOS 17.0以降
       </div>
       <div class="flex items-center gap-2">
         <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>
-        iPhone &amp; iPad
+        iPhone・iPad対応
       </div>
     </div>
   </div>
@@ -143,9 +143,9 @@ tailwind.config = {
   <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
     <p>&copy; 2026 Tamanegi Software Lab</p>
     <div class="flex gap-6">
-      <a href="mailto:contact@tamanegi-sw.com" class="hover:text-gray-300 transition-colors">Contact</a>
-      <a href="privacy.html" class="hover:text-gray-300 transition-colors">Privacy</a>
-      <a href="../ja/morx/support.html" class="hover:text-gray-300 transition-colors">日本語</a>
+      <a href="mailto:contact@tamanegi-sw.com" class="hover:text-gray-300 transition-colors">お問い合わせ</a>
+      <a href="privacy.html" class="hover:text-gray-300 transition-colors">プライバシー</a>
+      <a href="../../morx/support.html" class="hover:text-gray-300 transition-colors">English</a>
     </div>
   </div>
 </footer>
