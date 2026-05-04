@@ -32,6 +32,32 @@ tailwind.config = {
   .card-glow { background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(94,196,200,0.08), transparent 40%); }
   .gradient-border { background: linear-gradient(135deg, rgba(94,196,200,0.2), rgba(94,196,200,0.0) 60%); }
   .glass { background: rgba(18,18,31,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .carousel { position: relative; overflow: hidden; }
+  .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+  .carousel-slide { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 0 8px; box-sizing: border-box; }
+  .carousel-slide img { user-select: none; -webkit-user-drag: none; }
+  .carousel-caption { text-align: center; }
+  .carousel-caption .slide-num { font-size: 0.75rem; font-weight: 500; color: rgba(94,196,200,0.7); margin-bottom: 8px; letter-spacing: 0.05em; }
+  .carousel-caption h4 { font-size: 1.125rem; font-weight: 700; color: #f3f4f6; margin-bottom: 8px; }
+  .carousel-caption p { font-size: 0.875rem; color: #9ca3af; line-height: 1.6; }
+  @media (min-width: 640px) {
+    .carousel-slide { flex-direction: row; align-items: center; justify-content: center; gap: 40px; padding: 0; }
+    .carousel-caption { flex: 0 1 260px; text-align: left; padding: 0; }
+    .carousel-caption h4 { font-size: 1.375rem; margin-bottom: 12px; }
+    .carousel-caption p { font-size: 0.9375rem; line-height: 1.7; }
+    .carousel-img { flex: 0 0 auto; }
+  }
+  .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; }
+  .carousel-nav-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+  .carousel-nav-btn:hover { background: rgba(94,196,200,0.15); border-color: rgba(94,196,200,0.4); }
+  .carousel-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+  .carousel-dots button.active { background: rgba(94,196,200,0.8); transform: scale(1.3); }
+  .carousel-slide img { cursor: zoom-in; }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-height: 90vh; max-width: 90vw; border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 60px rgba(0,0,0,0.6); }
 </style>
 </head>
 <body class="bg-surface-950 text-gray-100 font-sans antialiased overflow-x-hidden">
@@ -157,30 +183,111 @@ tailwind.config = {
   <div class="relative group rounded-3xl border border-white/[0.06] bg-surface-900/60 backdrop-blur p-1 animate-fade-up delay-2" onmousemove="this.style.setProperty('--mouse-x',event.offsetX+'px');this.style.setProperty('--mouse-y',event.offsetY+'px')">
     <div class="card-glow absolute inset-0 rounded-3xl pointer-events-none"></div>
     <div class="gradient-border absolute inset-0 rounded-3xl pointer-events-none"></div>
-    <div class="relative rounded-[20px] bg-surface-900 p-8 sm:p-10">
-      <div class="flex flex-col sm:flex-row sm:items-start gap-8">
-        <img src="../assets/morx_logo.png" alt="MORX" class="shrink-0 w-20 h-20 rounded-2xl">
+    <div class="relative rounded-[20px] bg-surface-900 p-6 sm:p-10">
+      <div class="flex items-start gap-5 sm:gap-8">
+        <img src="../assets/products/morx/icon.png" alt="MORX" class="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl">
         <div class="flex-1 min-w-0">
           <h3 class="text-2xl sm:text-3xl font-bold tracking-tight">MORX</h3>
-          <p class="mt-3 text-gray-400 leading-relaxed text-lg">パドルキー、Koch法、ヘッドコピー練習を備えたモールス符号トレーニングアプリ。最初のditから本格的なQSOまで、自分のペースでCWをマスター。</p>
-          <div class="mt-8 flex flex-wrap gap-2.5">
-            <span class="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-sm text-gray-300">パドルキー</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-sm text-gray-300">Koch法</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-sm text-gray-300">ヘッドコピー</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-sm text-gray-300">クイズ</span>
-            <span class="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-sm text-gray-300">完全オフライン</span>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
-            <a href="morx/support.html" class="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-400/80 transition-colors">
-              サポート
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </a>
-            <a href="morx/privacy.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors">
-              プライバシーポリシー
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </a>
+          <p class="mt-2 sm:mt-3 text-gray-400 leading-relaxed text-base sm:text-lg">パドルキー、Koch法、ヘッドコピー練習を備えたモールス符号トレーニングアプリ。自分のペースでCWをマスター。</p>
+          <div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-brand-500/10 border border-brand-500/20">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-400" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span class="text-xs sm:text-sm font-medium text-brand-400">iOS版 近日リリース予定</span>
           </div>
         </div>
+      </div>
+      <div class="mt-8 carousel" id="morx-carousel">
+        <div class="carousel-track" id="morx-track">
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">1 / 8</div>
+              <h4>パドルキー</h4>
+              <p>二分木上でdit/dahをタップし、各文字を視覚的に学習。アイアンビックパドル入力に対応し、WPM速度調整も可能です。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/01_morse_tree_key.png" alt="モールスツリーキー入力" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">2 / 8</div>
+              <h4>学習メニュー</h4>
+              <p>Koch式トレーニング、暗記受信、一文字クイズ、単語クイズ、タイピングクイズなど、段階的にスキルを伸ばせる多彩な練習モードを搭載。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/02_learning_menu.png" alt="学習メニュー" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">3 / 8</div>
+              <h4>Koch式トレーニング</h4>
+              <p>実績あるKoch法で音だけでモールスを習得。正答率に応じて新しい文字が段階的に解放されます。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/03_koch_training_menu.png" alt="Koch式トレーニングメニュー" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">4 / 8</div>
+              <h4>リスニングドリル</h4>
+              <p>モールス音を注意深く聴き取り、回答前に各文字の音を耳に刻み込みます。Koch法の核心となる音声トレーニングです。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/04_koch_training_playing.png" alt="Koch式トレーニング再生中" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">5 / 8</div>
+              <h4>回答＆フィードバック</h4>
+              <p>選択肢から回答。正解・不正解が即座にハイライトされ、間違いからリアルタイムに学べます。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/05_koch_training_answer.png" alt="Koch式トレーニング回答" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">6 / 8</div>
+              <h4>単語タイピングクイズ</h4>
+              <p>モールス信号から単語を解読してタイプ入力。自分のペースで実践的なヘッドコピー力を鍛えます。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/06_word_typing_quiz.png" alt="単語タイピングクイズ" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">7 / 8</div>
+              <h4>翻訳</h4>
+              <p>テキストをモールス符号に変換し、音声で再生。リファレンスとしても送信練習としても活用できます。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/07_translation.png" alt="テキスト・モールス翻訳" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-caption">
+              <div class="slide-num">8 / 8</div>
+              <h4>モールス符号表</h4>
+              <p>A–Z、0–9、記号すべてのドット・ダッシュパターンを一覧できるビジュアルリファレンス。いつでもワンタップでアクセス。</p>
+            </div>
+            <div class="carousel-img"><img src="../assets/products/morx/screenshots/ja/08_morse_code_table.png" alt="モールス符号一覧表" class="h-72 sm:h-[28rem] w-auto rounded-2xl border border-white/10"></div>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-nav-btn" onclick="morxCarousel.prev()" aria-label="前へ">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="carousel-dots" id="morx-dots"></div>
+          <button class="carousel-nav-btn" onclick="morxCarousel.next()" aria-label="次へ">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-xs sm:text-sm text-gray-300">パドルキー</span>
+        <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-xs sm:text-sm text-gray-300">Koch法</span>
+        <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-xs sm:text-sm text-gray-300">ヘッドコピー</span>
+        <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-xs sm:text-sm text-gray-300">クイズ</span>
+        <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-xs sm:text-sm text-gray-300">完全オフライン</span>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
+        <a href="morx/support.html" class="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-400/80 transition-colors">
+          サポート
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="morx/privacy.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors">
+          プライバシーポリシー
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -212,6 +319,10 @@ tailwind.config = {
   </div>
 </section>
 
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- Footer -->
 <footer class="border-t border-white/5 py-10">
   <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
@@ -224,5 +335,51 @@ tailwind.config = {
   </div>
 </footer>
 
+<script>
+function createCarousel(trackId, dotsId) {
+  var track = document.getElementById(trackId);
+  var dots = document.getElementById(dotsId);
+  var slides = Array.from(track.querySelectorAll('.carousel-slide'));
+  var total = slides.length;
+  var idx = 0;
+  var nav = dots.parentElement;
+  var prevBtn = nav.querySelectorAll('.carousel-nav-btn')[0];
+  var nextBtn = nav.querySelectorAll('.carousel-nav-btn')[1];
+
+  function render() {
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    dots.querySelectorAll('button').forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+
+  for (var i = 0; i < total; i++) {
+    var btn = document.createElement('button');
+    btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+    btn.dataset.idx = i;
+    btn.addEventListener('click', function() { idx = parseInt(this.dataset.idx); render(); });
+    dots.appendChild(btn);
+  }
+  render();
+
+  return {
+    next: function() { if (idx < total - 1) { idx++; render(); } },
+    prev: function() { if (idx > 0) { idx--; render(); } }
+  };
+}
+var morxCarousel = createCarousel('morx-track', 'morx-dots');
+
+document.querySelectorAll('.carousel-slide img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    document.getElementById('lightbox-img').src = this.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
+</script>
 </body>
 </html>
